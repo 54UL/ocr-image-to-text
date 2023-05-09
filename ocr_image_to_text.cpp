@@ -2,7 +2,10 @@
 #include <opencv2/opencv.hpp>
 #include <tesseract/baseapi.h>
 
-const char * ReadImage(const char * file){
+//returns the text content from the provided file path
+//file: file path
+const char * ReadImage(const char * file)
+{
 // Load the image
     cv::Mat image = cv::imread(file);
 
@@ -22,24 +25,21 @@ const char * ReadImage(const char * file){
     // Run OCR on the image
     char* text = ocr.GetUTF8Text();
 
-    // Print the recognized text
-
     // Release the memory used by the OCR object and the text
     ocr.End();
-    // delete[] text; lol allocating shit....
     return text;
 }
 
-//Compile command 
+//Basic entry point
 int main(int argc, char ** argv) 
 {
-    // auto filePath = argv[1];
-
+    //IF SUCCESS RETURNS IMAGE TEXT OTHERWISE RETURNS NO_FILE_PATH TEXT CODE AND THE ONLY ONE
     if (argc > 1) {
         auto imageString = ReadImage(argv[1]); 
         std::cout<< imageString << std::endl; 
+        delete imageString;
     } else {
-         std::cout<<"No file path provided..."<<std::endl;
+         std::cout<<"NO_FILE_PATH"<<std::endl;
          return -1;
     }
 
