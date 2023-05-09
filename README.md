@@ -22,4 +22,5 @@ cd ./example && ./ocr_image_to_text example_ocr.png
 ```
 
 Must return exactly the same as the input image:
+
 ![alt text](example/example_ocr.png)
