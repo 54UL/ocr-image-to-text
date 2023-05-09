@@ -37,7 +37,7 @@ int main(int argc, char ** argv)
     if (argc > 1) {
         auto imageString = ReadImage(argv[1]); 
         std::cout<< imageString << std::endl; 
-        delete imageString;
+        delete imageString[];
     } else {
          std::cout<<"NO_FILE_PATH"<<std::endl;
          return -1;
